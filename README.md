@@ -72,13 +72,6 @@ On first launch, the `setup-project` hook installs ESP32-specific Python tools
 (esptool, pykwalify, pyYAML, jsonschema, packaging, pyelftools) into the
 shared virtual environment.
 
-### Verify from the command line
-
-```bash
-workshop shell
-riscv64-zephyr-elf-gcc --version
-```
-
 ---
 
 ## Plugs (resources this SDK consumes)
