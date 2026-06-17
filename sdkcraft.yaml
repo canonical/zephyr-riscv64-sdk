@@ -8,6 +8,7 @@ description: |
   ESP32 HAL modules and binary blobs for ESP32-S3 firmware development. Use
   this SDK alongside the zephyr base SDK.
 license: Apache-2.0
+website: https://github.com/canonical/zephyr-riscv64-sdk
 platforms:
   amd64:
 
