@@ -1,0 +1,4 @@
+name: test-zephyr-riscv64
+base: ${BASE}
+sdks:
+  - name: try-zephyr-riscv64

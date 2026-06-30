@@ -1,0 +1,22 @@
+summary: Verify the bundled ESP32 HAL modules are present in the SDK
+
+# Unlike the other toolchain SDKs, zephyr-riscv64 also ships the ESP32
+# hal_espressif module (and its binary blobs) so that ESP32 targets can be
+# built. This task checks those extra files made it into the packed SDK.
+
+prepare: |
+  envsubst '${BASE}' <workshop.yaml.in >workshop.yaml
+  workshop launch
+
+restore: |
+  workshop remove || true
+
+execute: |
+  # The hal_espressif module tree must be present and non-empty.
+  workshop exec -- test -d /var/lib/workshop/sdk/zephyr-riscv64/modules/hal/espressif
+  workshop exec -- sh -c '[ -n "$(ls -A /var/lib/workshop/sdk/zephyr-riscv64/modules/hal/espressif)" ]'
+  # The binary blobs fetched at build time must be present.
+  workshop exec -- test -d /var/lib/workshop/sdk/zephyr-riscv64/modules/hal/espressif/zephyr/blobs
+
+debug: |
+  workshop exec -- ls -R /var/lib/workshop/sdk/zephyr-riscv64/modules/hal/espressif | head -40 || true
